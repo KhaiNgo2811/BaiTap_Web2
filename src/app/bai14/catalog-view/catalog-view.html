@@ -1,0 +1,27 @@
+<p>catalog-view works!</p>
+<table border="1">
+  <tr>
+    <td>Ma Danh Muc</td>
+    <td>Ten Danh Muc</td>
+  </tr>
+  <ng-container *ngFor="let c of categories">
+    <tr>
+      <td>{{ c.Cateid }}</td>
+      <td>{{ c.CateName }}</td>
+    </tr>
+    <tr>
+      <td>Ma San Pham</td>
+      <td>Ten San Pham</td>
+      <td>Gia San Pham</td>
+      <td>Picture</td>
+    </tr>
+    <tr *ngFor="let p of c.Products">
+      <td>{{ p.ProductId }}</td>
+      <td>{{ p.ProductName }}</td>
+      <td>{{ p.Price }}</td>
+      <td>
+        <img src="{{ p.Image }}" />
+      </td>
+    </tr>
+  </ng-container>
+</table>

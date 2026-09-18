@@ -1,0 +1,24 @@
+<p>customer-list works!</p>
+<table border="1">
+  <tr>
+    <td>Id</td>
+    <td>Name</td>
+    <td>Email</td>
+    <td>Age</td>
+    <td>#</td>
+  </tr>
+  <ng-container *ngFor="let t of customerTypes">
+    <tr>
+      <td colspan="5">{{ t.CustomerTypeId }} - {{ t.CustomterTypeName }}</td>
+    </tr>
+    <tr *ngFor="let c of t.Customers">
+      <td>{{ c.Id }}</td>
+      <td>{{ c.Name }}</td>
+      <td>{{ c.Email }}</td>
+      <td>{{ c.Age }}</td>
+      <td>
+        <img src="{{ c.Image }}" />
+      </td>
+    </tr>
+  </ng-container>
+</table>
