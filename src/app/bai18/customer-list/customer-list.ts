@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Customer } from '../../customer';
 
@@ -9,11 +9,11 @@ import { Customer } from '../../customer';
   templateUrl: './customer-list.html',
 })
 export class CustomerList {
-  public customerTypes: any;
+  public customerTypes = signal<any[]>([]);
 
   constructor(cservice: Customer) {
     cservice.getCustomerTypes().subscribe((data: any) => {
-      this.customerTypes = data;
+      this.customerTypes.set(data);
     });
   }
 }

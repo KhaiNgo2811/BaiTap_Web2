@@ -8,21 +8,21 @@
         "Name": "Obama",
         "Email": "obama@gmail.com",
         "Age": 67,
-        "Image": "assets/avatars/obama-avatar.png"
+        "Image": "/assets/avatars/obama-avatar.jpg"
       },
       {
         "Id": "Cus456",
         "Name": "Kim jong Un",
         "Email": "unun@gmail.com",
         "Age": 38,
-        "Image": "assets/avatars/unun-avatar.png"
+        "Image": "/assets/avatars/obama-avatar.jpg"
       },
       {
         "Id": "Cus789",
         "Name": "Putin",
         "Email": "putin@gmail.com",
         "Age": 77,
-        "Image": "assets/avatars/putin-avatar.png"
+        "Image": "/assets/avatars/obama-avatar.jpg"
       }
     ]
   },
@@ -35,14 +35,14 @@
         "Name": "Hồ Cẩm Đào",
         "Email": "hodao@gmail.com",
         "Age": 16,
-        "Image": "assets/avatars/hodao-avatar.png"
+        "Image": "/assets/avatars/obama-avatar.jpg"
       },
       {
         "Id": "Cus111",
         "Name": "Tap Can Binh",
         "Email": "binhbinh@gmail.com",
         "Age": 67,
-        "Image": "assets/avatars/binhbinh-avatar.png"
+        "Image": "/assets/avatars/obama-avatar.jpg"
       }
     ]
   }

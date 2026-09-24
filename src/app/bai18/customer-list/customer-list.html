@@ -7,7 +7,7 @@
     <td>Age</td>
     <td>#</td>
   </tr>
-  <ng-container *ngFor="let t of customerTypes">
+  <ng-container *ngFor="let t of customerTypes()">
     <tr>
       <td colspan="5">{{ t.CustomerTypeId }} - {{ t.CustomterTypeName }}</td>
     </tr>
