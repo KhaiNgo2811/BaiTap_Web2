@@ -12,6 +12,7 @@ import { ProductListCallServiceComponent } from './product-list-call-service-com
 import { ProductListCallHttpServiceComponent } from './product-list-call-http-service-component/product-list-call-http-service-component';
 import { ProductHttpHandleErrorServiceComponent } from './product-http-handle-error-service-component/product-http-handle-error-service-component';
 import { ProductDetailComponent } from './product-detail-component/product-detail-component';
+import { ProductListAdvancedComponent } from './product-list-advanced-component/product-list-advanced-component';
 
 const routes: Routes = [
   { path: 'binding-property', component: BindingPropertyComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'product-list-call-http-service', component: ProductListCallHttpServiceComponent},
   {path: 'product-http-handle-error-service', component: ProductHttpHandleErrorServiceComponent},
   {path: "products/:id", component: ProductDetailComponent},
+  {path: "product-list-advanced", component: ProductListAdvancedComponent},
 ];
 
 @NgModule({

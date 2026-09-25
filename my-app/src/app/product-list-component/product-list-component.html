@@ -13,7 +13,7 @@
       <td>{{ product.id }}</td>
       <td>{{ product.name }}</td>
       <td>{{ product.price }}</td>
-      <td>Xem chi tiết</td>
+      <td><a [routerLink]="['/products', product.id]">Xem chi tiết</a></td>
     </tr>
   </tbody>
 </table>
@@ -31,7 +31,7 @@
     @for (product of products; track $index) {
     <tr [class.row-invalid]="product.price < 0">
       <td>{{ product.id }}</td>
-      <td>{{ product.name }}</td>
+      <td><a [routerLink]="['/products', product.id]">{{ product.name }}</a></td>
       @if (product.price < 0) {
         <td class="price price-invalid">
           {{ product.price }}

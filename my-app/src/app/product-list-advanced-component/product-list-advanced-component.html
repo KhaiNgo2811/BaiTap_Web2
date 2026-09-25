@@ -1,0 +1,26 @@
+<p>product-list-advanced-component works!</p>
+<p class="error">{{ errorMessage() }}</p>
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (product of products(); track product.id) {
+      <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td><button (click)="viewDetails(product.id)">Xem chi tiết</button></td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="4">Không có sản phẩm nào</td>
+      </tr>
+    }
+  </tbody>
+</table>
