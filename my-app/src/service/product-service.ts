@@ -1,5 +1,5 @@
 import { Service } from '@angular/core';
-import { Product } from '../classes/IProducts';
+import { Product } from '../app/classes/IProducts';
 
 @Service()
 export class ProductService {

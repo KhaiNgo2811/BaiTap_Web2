@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { Product } from '../../classes/IProducts';
 import { ProductHttpHandleErrorService } from '../../service/product-http-handle-error-service';
+import { Product } from '../classes/IProducts';
 
 @Component({
   selector: 'app-product-http-handle-error-service-component',
@@ -13,7 +13,7 @@ export class ProductHttpHandleErrorServiceComponent {
   errMessage = signal("")
   constructor(private _service: ProductHttpHandleErrorService) {}
   ngOnInit(): void {
-    this._service.getProductList().subscribe({
+    this._service.getProductList().subscribe({  
       next:(data) => {
         this.products.set(data);
       },

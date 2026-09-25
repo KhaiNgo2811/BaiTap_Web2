@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { Product } from '../../classes/IProducts';
+import { Product } from '../classes/IProducts';
 import { ProductHttpService } from '../../service/product-http-service';
 
 @Component({

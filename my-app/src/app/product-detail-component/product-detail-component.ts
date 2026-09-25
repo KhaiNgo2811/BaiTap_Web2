@@ -1,7 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { ProductHttpHandleErrorService } from '../../service/product-http-handle-error-service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from '../../classes/IProducts';
+import { Product } from '../classes/IProducts';
 
 @Component({
   selector: 'app-product-detail-component',

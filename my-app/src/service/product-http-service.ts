@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product } from '../classes/IProducts';
+import { Product } from '../app/classes/IProducts';
 import { Observable } from 'rxjs/internal/Observable';
 
-@Injectable({
+@Injectable({  
     providedIn: 'root'
 })
 
 export class ProductHttpService {
-    private _url: string = '/dataset/product.json';
+    private _url: string = 'dataset/product.json';
     constructor(private _http: HttpClient) {}
-    getProductList(): Observable<Product[]> {
+    getProductList(): Observable<Product[]> {   
         return this._http.get<Product[]>(this._url);
     }
 }

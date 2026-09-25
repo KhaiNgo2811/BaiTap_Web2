@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Product } from '../../classes/IProducts';
+import { Product } from '../classes/IProducts';
 
 @Component({
   selector: 'app-product-dropdown-list-component',

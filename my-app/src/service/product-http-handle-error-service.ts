@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product } from '../classes/IProducts';
+import { Product } from '../app/classes/IProducts';
 import { Observable } from 'rxjs/internal/Observable';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { catchError } from 'rxjs/internal/operators/catchError';
@@ -12,7 +12,7 @@ import { map } from 'rxjs/internal/operators/map';
 })
 export class ProductHttpHandleErrorService {
     private _url: string = '/dataset/product.json';
-    constructor(private _http: HttpClient) {}
+    constructor(private _http: HttpClient) {}   
     getProductList(): Observable<Product[]> {
         return this._http.get<Product[]>(this._url)
         .pipe(
@@ -36,7 +36,7 @@ handleError(error: any): Observable<never> {
      `;
     }
     console.error(errorMessage);
-    return throwError(() => new Error (errorMessage));
+    return throwError(() => new Error (errorMessage));  
   }
   getProductById(id: number): Observable<Product | undefined> {
     return this.getProductList().pipe(

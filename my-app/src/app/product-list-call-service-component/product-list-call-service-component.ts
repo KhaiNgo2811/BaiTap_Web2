@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Product } from '../../classes/IProducts';
+import { Product } from '../classes/IProducts';
 import { ProductService } from '../../service/product-service';
 import ps from '@angular/common/locales/extra/ps';
 
