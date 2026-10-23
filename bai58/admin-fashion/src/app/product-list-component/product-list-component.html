@@ -1,0 +1,48 @@
+<p>product-list-component works!</p>
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
+      <td><a [routerLink]="['/products', product.id]">Xem chi tiết</a></td>
+    </tr>
+  </tbody>
+</table>
+<div>
+    <table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Hình ảnh</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (product of products; track $index) {
+    <tr [class.row-invalid]="product.price < 0">
+      <td>{{ product.id }}</td>
+      <td><a [routerLink]="['/products', product.id]">{{ product.name }}</a></td>
+      @if (product.price < 0) {
+        <td class="price price-invalid">
+          {{ product.price }}
+          <span class="warning"> Giá không hợp lệ</span>
+        </td>
+      } @else {
+        <td class="price price-valid">{{ product.price }}</td>
+      }
+      <td><img [src]="product.image" [alt]="product.name" width="100"> </td>
+    </tr>
+    }
+  </tbody>
+</table>
+</div>

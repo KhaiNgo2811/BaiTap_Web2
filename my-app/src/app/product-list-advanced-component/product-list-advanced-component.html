@@ -7,6 +7,7 @@
       <th>Name</th>
       <th>Price</th>
       <th>Details</th>
+      <th>Slug</th>
     </tr>
   </thead>
   <tbody>
@@ -16,11 +17,19 @@
         <td>{{ product.name }}</td>
         <td>{{ product.price }}</td>
         <td><button (click)="viewDetails(product.id)">Xem chi tiết</button></td>
+        <td>
+          <a (click)="viewDetailSlug(product)"
+             style="cursor: pointer;"
+             title="click here to view detail">
+            {{ generateSlug(product.name, product.id) }}
+          </a>
+        </td>
       </tr>
     } @empty {
       <tr>
-        <td colspan="4">Không có sản phẩm nào</td>
+        <td colspan="5">Không có sản phẩm nào</td>
       </tr>
     }
   </tbody>
 </table>
+<router-outlet></router-outlet>

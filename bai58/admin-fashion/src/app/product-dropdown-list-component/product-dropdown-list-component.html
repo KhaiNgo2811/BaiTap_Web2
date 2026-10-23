@@ -1,0 +1,20 @@
+<p>product-dropdown-list-component works!</p>
+<h1>Product Dropdown List</h1>
+<select>
+    <option *ngFor="let product of products" [value]="product.id">
+        {{ product.name }} - {{ product.price }}
+        <br>
+        img: <img [src]="product.image" [alt]="product.name" width="100">
+    </option>   
+
+</select>
+<h1>Product Dropdown List o1</h1>
+<ol>
+    @for (product of products; track $index) {
+    <li>
+        {{ product.name }} - {{ product.price }}
+        <br>
+        img: <img [src]="product.image" [alt]="product.name" width="100">
+    </li>
+    }
+</ol>

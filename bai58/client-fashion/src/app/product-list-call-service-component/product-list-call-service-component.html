@@ -1,0 +1,36 @@
+<p>product-list-call-service-component works!</p>
+Min Price: <input type="number" [(ngModel)]="minPrice" >
+Max Price: <input type="number" [(ngModel)]="maxPrice" >
+<button (click)="doFilter()"> Filter</button>
+ <table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Hình ảnh</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (product of products; track $index) {
+    <tr [class.row-invalid]="product.price < 0">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      @if (product.price < 0) {
+        <td class="price price-invalid">
+          {{ product.price }}
+          <span class="warning"> Giá không hợp lệ</span>
+        </td>
+      } @else {
+        <td class="price price-valid">{{ product.price }}</td>
+      }
+      <td><img [src]="product.image" [alt]="product.name" width="100"> </td>
+    </tr>
+    }
+    @empty {
+        <tr>
+            <td colspan="4">Không có sản phẩm nào</td>
+        </tr>
+    }
+  </tbody>
+</table>

@@ -1,0 +1,35 @@
+<table border="1">
+    <tr>
+        <td colspan="2">Phương trình bậc 2</td>
+    </tr>
+    <tr>
+        <td>Hệ số a:</td>
+        <td>
+            <input type="number" value="{{hsa}}" [(ngModel)]="hsa"  />
+        </td>
+    </tr>
+   <tr>
+         <td>Hệ số b:</td>
+        <td>
+            <input type="number" value="{{ hsb }}" [(ngModel)]="hsb" />
+        </td>
+    </tr>
+    <tr>
+         <td>Hệ số c:</td>
+        <td>
+            <input type="number" value="{{ hsc }}" [(ngModel)]="hsc" />
+        </td>
+    </tr>
+    <tr>
+        <td>Kết quả:</td>
+        <td>
+            <input type="text" [value]="result" readonly />
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button (click)="giaiPtb2()">Giải phương trình</button>
+            <button (click)="ptMoi()">PT Mới</button>
+        </td>
+    </tr>
+</table>

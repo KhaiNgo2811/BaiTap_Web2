@@ -1,0 +1,79 @@
+<div class="fashion-site">
+
+  <header class="site-header">
+    <span class="brand">FASHION</span>
+    <span class="tagline">Street · Trends · Celebrity · Kids</span>
+  </header>
+
+  @if (selected(); as f) {
+    <!-- ===== CHI TIẾT ===== -->
+    <article class="detail container">
+      <button class="btn-back" (click)="back()">← Quay lại danh sách</button>
+      <div class="detail-meta">
+        <span class="style-pill">{{ f.style }}</span>
+        <span class="idf">#{{ f.IdF }}</span>
+        @if (f.created_date) {
+          <span class="idf">{{ f.created_date | date:'dd/MM/yyyy' }}</span>
+        }
+      </div>
+      <h1 class="detail-title">{{ f.fashion_subject }}</h1>
+      <div class="detail-body" [innerHTML]="detailHtml(f.fashion_detail)"></div>
+      <img class="detail-img" [src]="_service.imageUrl(f.IdF)" [alt]="f.fashion_subject">
+    </article>
+  } @else if (detailLoading()) {
+    <div class="state-msg">Đang tải chi tiết...</div>
+  } @else {
+    <!-- ===== DANH SÁCH ===== -->
+    <section class="search-bar container">
+      <div class="search-box">
+        <span class="search-ico"></span>
+        <input type="text" list="style-options" placeholder='TRY "STREET STYLE"'
+               [value]="styleKeyword()" (input)="setStyle($any($event.target).value)">
+        <datalist id="style-options">
+          @for (s of styles(); track s) {
+            <option [value]="s"></option>
+          }
+        </datalist>
+      </div>
+      <select class="style-select" (change)="setStyle($any($event.target).value)">
+        <option value="" [selected]="styleKeyword() === ''">Tất cả Style</option>
+        @for (s of styles(); track s) {
+          <option [value]="s" [selected]="s.toLowerCase() === styleKeyword().trim().toLowerCase()">{{ s }}</option>
+        }
+      </select>
+      <button class="btn-search" (click)="setStyle('')">ĐẶT LẠI</button>
+    </section>
+
+    @if (errMessage()) {
+      <div class="alert alert-danger container py-2">{{ errMessage() }}</div>
+    }
+
+    @if (loading()) {
+      <div class="state-msg">Đang tải dữ liệu...</div>
+    }
+
+    @for (g of groups(); track g.style) {
+      <section class="style-section container">
+        <h2 class="style-heading"><span>{{ g.style }}</span></h2>
+        <div class="grid">
+          @for (f of g.items; track f.IdF) {
+            <a class="card-fashion" (click)="open(f)">
+              <div class="thumb">
+                <img [src]="_service.imageUrl(f.IdF)" [alt]="f.fashion_subject" loading="lazy">
+                <span class="thumb-badge">▣</span>
+              </div>
+              <h3 class="card-title">{{ f.fashion_subject }}</h3>
+              @if (f.CreatedDate) {
+                <small class="card-date">{{ f.CreatedDate | date:'dd/MM/yyyy' }}</small>
+              }
+            </a>
+          }
+        </div>
+      </section>
+    } @empty {
+      @if (!loading()) {
+        <div class="state-msg">Không có Fashion thuộc Style "{{ styleKeyword() }}"</div>
+      }
+    }
+  }
+</div>

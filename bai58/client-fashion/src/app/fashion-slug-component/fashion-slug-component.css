@@ -1,0 +1,37 @@
+.fashion-list {
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.list-group-item {
+  cursor: pointer;
+}
+
+.style-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  opacity: 0.75;
+}
+
+.slug-text {
+  display: block;
+  font-family: monospace;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  word-break: break-all;
+}
+
+.detail-card {
+  overflow: hidden;
+}
+
+.detail-img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  background: #f1f3f5;
+}
+
+.detail-text {
+  white-space: pre-line;
+}

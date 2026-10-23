@@ -1,0 +1,43 @@
+<section class="admin">
+  <h1>Fashion Admin</h1>
+  @if (message) { <p class="success">{{ message }}</p> }
+  @if (error) { <p class="error">{{ error }}</p> }
+
+  @if (!editing) {
+    <button (click)="newFashion()">Thêm Fashion</button>
+    @if (loading) { <p>Đang tải...</p> }
+    <table>
+      <thead><tr><th>Style</th><th>Tiêu đề</th><th>Ngày tạo</th><th>Thao tác</th></tr></thead>
+      <tbody>
+        @for (item of fashions; track item.Id) {
+          <tr>
+            <td>{{ item.Style }}</td>
+            <td>{{ item.fashion_subject }}</td>
+            <td>{{ item.CreatedDate | date:'dd/MM/yyyy' }}</td>
+            <td>
+              <button (click)="edit(item.Id)">Sửa</button>
+              <button (click)="remove(item.Id)">Xóa</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  } @else {
+    <h2>{{ fashion._id ? 'Sửa Fashion' : 'Thêm Fashion' }}</h2>
+    <label>Style <input [(ngModel)]="fashion.style" name="style"></label>
+    <label>Tiêu đề <input [(ngModel)]="fashion.fashion_subject" name="subject"></label>
+    <label>Thumbnail <input type="file" (change)="onFileSelected($event)"></label>
+    <label>Chi tiết</label>
+    <div class="toolbar">
+      <button type="button" (click)="format('bold')"><b>B</b></button>
+      <button type="button" (click)="format('italic')"><i>I</i></button>
+      <button type="button" (click)="format('formatBlock', 'h2')">H2</button>
+      <button type="button" (click)="format('insertUnorderedList')">Danh sách</button>
+    </div>
+    <div class="editor" contenteditable="true"
+      [innerHTML]="fashion.fashion_detail"
+      (input)="fashion.fashion_detail = $any($event.target).innerHTML"></div>
+    <button (click)="save()">Lưu</button>
+    <button (click)="cancel()">Hủy</button>
+  }
+</section>

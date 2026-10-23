@@ -1,0 +1,26 @@
+.admin {
+  max-width: 1120px;
+  margin: 32px auto;
+  padding: 28px;
+  color: #241b22;
+  background: linear-gradient(145deg, #fff, #fff6fa);
+  border: 1px solid #f0dce6;
+  border-radius: 22px;
+  box-shadow: 0 18px 45px rgba(93, 31, 62, .12);
+}
+h1 { margin: 0 0 22px; color: #c2185b; letter-spacing: .08em; }
+h2 { margin-top: 0; }
+table { width: 100%; border-collapse: separate; border-spacing: 0; overflow: hidden; margin-top: 20px; background: #fff; border-radius: 14px; }
+th, td { border-bottom: 1px solid #f1e3e9; padding: 14px 12px; text-align: left; }
+th { background: #241b22; color: #fff; font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; }
+tr:last-child td { border-bottom: 0; }
+button { margin: 4px; padding: 9px 15px; cursor: pointer; border: 0; border-radius: 9px; background: #241b22; color: #fff; font-weight: 600; }
+button:hover { background: #c2185b; transform: translateY(-1px); }
+label { display: block; margin: 16px 0; font-weight: 700; }
+input:not([type="file"]) { display: block; width: 100%; box-sizing: border-box; margin-top: 7px; padding: 11px 12px; border: 1px solid #e6c4d4; border-radius: 9px; font: inherit; }
+input[type="file"] { display: block; margin-top: 8px; }
+.toolbar { border: 1px solid #e6c4d4; padding: 6px; background: #fff4f8; border-radius: 10px 10px 0 0; }
+.editor { min-height: 200px; border: 1px solid #e6c4d4; border-top: 0; padding: 14px; margin-bottom: 12px; background: #fff; border-radius: 0 0 10px 10px; line-height: 1.6; }
+.success, .error { padding: 11px 14px; border-radius: 9px; }
+.success { color: #146c43; background: #e8f7ef; }.error { color: #b00020; background: #fff0f2; }
+@media (max-width: 700px) { .admin { margin: 12px; padding: 16px; overflow-x: auto; } table { min-width: 650px; } }

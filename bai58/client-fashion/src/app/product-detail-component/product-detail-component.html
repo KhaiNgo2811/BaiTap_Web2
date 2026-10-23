@@ -1,0 +1,13 @@
+@if (error()) {
+  <p class="error">{{ error() }}</p>
+} @else if (product()) {
+  <div class="product-detail">
+    <h2>{{ product()!.name }}</h2>
+    <img [src]="product()!.image" [alt]="product()!.name" width="200">
+    <p><strong>Giá:</strong> {{ product()!.price }}</p>
+    <p><strong>Mô tả:</strong> {{ product()!.description }}</p>
+  </div>
+} @else {
+  <p>Đang tải...</p>
+}
+<button (click)="goBack()">Quay lại</button>

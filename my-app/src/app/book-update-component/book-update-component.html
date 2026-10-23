@@ -1,0 +1,38 @@
+<p>{{ errMessage() }}</p>
+<table border="1">
+  <tr>
+    <td>Book Id</td>
+    <td><input type="text" class="form-control" [(ngModel)]="book.BookId" placeholder="Enter Book Id"></td>
+  </tr>
+  <tr>
+    <td>Book Name</td>
+    <td><input type="text" class="form-control" [(ngModel)]="book.BookName" placeholder="Enter Book Name"></td>
+  </tr>
+  <tr>
+    <td>Price</td>
+    <td><input type="number" class="form-control" [(ngModel)]="book.Price" placeholder="Enter Price"></td>
+  </tr>
+  <tr>
+    <td>Image</td>
+    <td><input type="file" class="form-control" (change)="onFileSelected($event)"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><button (click)="putBook()">Submit Update</button></td>
+  </tr>
+</table>
+
+<table border="1">
+  <tr><td>BookId</td><td>BookName</td><td>Price</td><td>Image</td></tr>
+  <tbody>
+    @for (book of books(); track book.BookId) {
+      <tr (click)="selectBook(book.BookId)" style="cursor: pointer;">
+        <td>{{ book.BookId }}</td>
+        <td>{{ book.BookName }}</td>
+        <td>{{ book.Price }}</td>
+        <td><img [src]="server_images_link + book.Image" width="50" height="50"></td>
+      </tr>
+    } @empty {
+      <tr><td colspan="4">Not found books</td></tr>
+    }
+  </tbody>
+</table>

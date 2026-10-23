@@ -1,0 +1,82 @@
+<div class="container my-4">
+  <div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+      <h2 class="card-title mb-3">Search Fashion</h2>
+      <div class="row g-2 align-items-end">
+        <div class="col-12 col-md-4">
+          <label class="form-label small text-muted mb-1">Từ khóa</label>
+          <input type="text" class="form-control" [(ngModel)]="keyword"
+                 placeholder="Nhập nội dung cần tìm..." (keyup.enter)="search()">
+        </div>
+        <div class="col-6 col-md-2">
+          <label class="form-label small text-muted mb-1">Tìm theo</label>
+          <select class="form-select" [(ngModel)]="field">
+            <option value="fashion_subject">fashion_subject</option>
+            <option value="fashion_detail">fashion_detail</option>
+          </select>
+        </div>
+        <div class="col-6 col-md-2">
+          <label class="form-label small text-muted mb-1">Độ đo</label>
+          <select class="form-select" [(ngModel)]="measure">
+            <option value="cosine">Cosine</option>
+            <option value="jaccard">Jaccard</option>
+          </select>
+        </div>
+        <div class="col-6 col-md-2">
+          <label class="form-label small text-muted mb-1">Số kết quả</label>
+          <select class="form-select" [(ngModel)]="limit">
+            @for (n of limits; track n) {
+              <option [ngValue]="n">{{ n }}</option>
+            }
+          </select>
+        </div>
+        <div class="col-6 col-md-2">
+          <button class="btn btn-primary w-100" (click)="search()">Tìm kiếm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  @if (errMessage()) {
+    <div class="alert alert-danger py-2">{{ errMessage() }}</div>
+  }
+
+  <div class="table-responsive shadow-sm rounded">
+    <table class="table table-hover align-middle mb-0 bg-white">
+      <thead class="table-dark">
+        <tr>
+          <th>Id</th>
+          <th>Style</th>
+          <th>Fashion Subject</th>
+          <th>Fashion Detail</th>
+          <th>Image</th>
+          <th class="text-center">{{ usedMeasure() === 'cosine' ? 'Cosine Similarity' : 'Jaccard Similarity' }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (f of fashions(); track f.Id) {
+          <tr [class]="rowClass(f.Similarity)">
+            <td>{{ f.Id }}</td>
+            <td>{{ f.Style }}</td>
+            <td>{{ f.fashion_subject }}</td>
+            <td class="detail-cell">{{ f.fashion_detail }}</td>
+            <td><img [src]="f.Image" width="90" class="rounded border" alt="fashion"></td>
+            <td class="text-center"><span class="score-badge">{{ f.Similarity | number:'1.4-4' }}</span></td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="6" class="text-center text-muted py-5">
+              {{ searched() ? '😕 Không tìm thấy kết quả' : 'Hãy nhập từ khóa và bấm Tìm kiếm' }}
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex gap-2 flex-wrap mt-3">
+    <span class="legend-chip row-high">0.75 → 1</span>
+    <span class="legend-chip row-mid">0.5 → 0.75</span>
+    <span class="legend-chip row-low">&lt; 0.5</span>
+  </div>
+</div>

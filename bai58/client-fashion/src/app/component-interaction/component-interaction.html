@@ -1,0 +1,12 @@
+<h2>Component Interaction (@Input / @Output)</h2>
+
+<p>Data from App Component: {{ dataToChild }}</p>
+
+<app-child-component
+  [parentData]="dataToChild"
+  (notifyParent)="handleMessage($event)">
+</app-child-component>
+
+@if (dataFromChild) {
+  <p>Data from child component: {{ dataFromChild }}</p>
+}

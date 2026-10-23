@@ -1,0 +1,54 @@
+<div class="container-fluid my-4">
+  <h2 class="mb-3">Fashion Slug</h2>
+
+  @if (errMessage()) {
+    <div class="alert alert-danger py-2">{{ errMessage() }}</div>
+  }
+
+  <div class="row g-4">
+    <div class="col-12 col-lg-5">
+      <div class="card shadow-sm border-0">
+        <div class="card-header bg-dark text-white">Danh sách Fashion</div>
+        <div class="list-group list-group-flush fashion-list">
+          @for (f of fashions(); track f.IdF) {
+            <a class="list-group-item list-group-item-action"
+               [class.active]="f.IdF === selectedIdF()"
+               (click)="selectFashion(f)">
+              <div class="d-flex justify-content-between align-items-start">
+                <span class="badge text-bg-secondary">IdF {{ f.IdF }}</span>
+                <small class="text-uppercase style-tag">{{ f.Style }}</small>
+              </div>
+              <div class="fw-semibold mt-1">{{ f.fashion_subject }}</div>
+              <small class="slug-text">{{ generateSlug(f.fashion_subject, f.IdF) }}</small>
+            </a>
+          } @empty {
+            <div class="list-group-item text-muted text-center py-4">Đang tải danh sách...</div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-7">
+      <div class="card shadow-sm border-0 detail-card">
+        @if (loading()) {
+          <div class="card-body text-center text-muted py-5">Đang tải chi tiết...</div>
+        } @else if (fashion(); as f) {
+          <img [src]="f.getBase64string()" class="card-img-top detail-img" [alt]="f.fashion_subject">
+          <div class="card-body">
+            <div class="mb-2">
+              <span class="badge text-bg-dark me-2">IdF {{ f.IdF }}</span>
+              <span class="badge text-bg-warning text-uppercase">{{ f.style }}</span>
+            </div>
+            <h4 class="card-title">{{ f.fashion_subject }}</h4>
+            <p class="card-text detail-text">{{ f.fashion_detail }}</p>
+            <small class="text-muted">_id: {{ f._id }}</small>
+          </div>
+        } @else {
+          <div class="card-body text-center text-muted py-5">
+            Chọn một Fashion trong danh sách để xem chi tiết
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

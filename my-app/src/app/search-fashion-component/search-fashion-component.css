@@ -1,0 +1,43 @@
+.detail-cell {
+  max-width: 360px;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.score-badge {
+  display: inline-block;
+  min-width: 70px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.75);
+  color: inherit;
+}
+
+/* [0.75 -> 1]: nền vàng + chữ đỏ */
+tr.row-high > td { background-color: #ffeb3b; color: #d90000; }
+/* [0.5 -> 0.75): nền hồng + chữ xanh */
+tr.row-mid > td { background-color: #ffc0d9; color: #0033cc; }
+/* < 0.5: nền đỏ + chữ trắng */
+tr.row-low > td { background-color: #d32f2f; color: #ffffff; }
+
+.table-hover > tbody > tr.row-high:hover > td { background-color: #ffe100; color: #d90000; }
+.table-hover > tbody > tr.row-mid:hover > td { background-color: #ffa8c9; color: #0033cc; }
+.table-hover > tbody > tr.row-low:hover > td { background-color: #b71c1c; color: #ffffff; }
+
+tr.row-low .score-badge { color: #d32f2f; }
+tr.row-high .score-badge { color: #d90000; }
+tr.row-mid .score-badge { color: #0033cc; }
+
+.legend-chip {
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.legend-chip.row-high { background: #ffeb3b; color: #d90000; }
+.legend-chip.row-mid { background: #ffc0d9; color: #0033cc; }
+.legend-chip.row-low { background: #d32f2f; color: #ffffff; }
